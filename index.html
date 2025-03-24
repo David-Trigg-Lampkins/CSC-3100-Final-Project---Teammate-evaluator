@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teammate Evaluator - Authentication</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/sweetalert.js"></script>
+    <style>
+        .error {
+            border: 2px solid red;
+        }
+    </style>
+</head>
+
+<body class="bg-dark">
+    <div class="d-flex justify-content-center align-items-center vh-100">
+        <!-- login form -->
+        <form id="frmLogin" class="card col-12 col-md-5 col-lg-4 p-4 d-none">
+            <div class="card-body">
+                <h1 class="text-center mb-0 text-light">Teammate Evaluator</h1>
+                <h3 class="text-center mb-4 text-light">Login</h3>
+                <input id="txtLoginEmail" class="form-control" type="email" placeholder="johndoe@email.com"
+                    aria-label="email" required>
+                <input id="txtLoginPassword" class="form-control mt-2" type="password" placeholder="password"
+                    aria-label="password" required>
+                <hr />
+                <button class="btn btn-info col-12 mt-2" type="button" id="btnLogin">Login</button>
+                <button class="btn btn-primary col-12 mt-2" type="button" id="btnResetPassword">Forgot Password?</button>
+                <button class="btn btn-link col-12 mt-0" id="btnSwapToRegister" type="button">Don't have an account?
+                    Register</button>
+            </div>
+        </form>
+
+        <!-- registration form -->
+        <form id="frmRegister" class="card col-12 col-md-5 col-lg-4 p-4">
+            <div class="card-body">
+                <h1 class="text-center mb-0 text-light">Teammate Evaluator</h1>
+                <h3 class="text-center mb-4 text-light">Register</h3>
+                <input id="txtUsername" class="form-control" type="email" placeholder="johndoe@email.com" aria-label="username" required>
+                <input id="txtPassword" class="form-control mt-2" type="password" placeholder="password" aria-label="password" required minlength="6">
+                <input id="txtPasswordConfirm" class="form-control mt-2" type="password" placeholder="confirm password" aria-label="confirm password" required>
+                <input id="txtPhoneNumber" class="form-control mt-2" type="tel" placeholder="phone number" aria-label="phone number" required>
+                
+                <hr />
+                <button class="btn btn-info col-12 mt-2" type="submit">Register</button>
+                <button class="btn btn-link col-12 mt-0" id="btnSwapToLogin" type="button">Already have an account? Login</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('btnLogin').addEventListener('click', function () {
+            let email = document.getElementById('txtLoginEmail').value;
+            let password = document.getElementById('txtLoginPassword').value;
+            let boolLoginGood = true
+            let strLoginErrorText = ''
+
+            if(!email){
+                boolLoginGood = false
+                strLoginErrorText += "<p>Please enter a valid email</p>"
+            }
+
+            if(!password){
+                boolLoginGood = false
+                strLoginErrorText += "<p>Please enter a valid password</p>"
+            }
+
+            if(!boolLoginGood){
+                Swal.fire("Error", strLoginErrorText, "error")
+            }
+            else{
+                Swal.fire("Success", "Login successful!", "success");
+            }
+        });
+
+        document.getElementById('frmRegister').addEventListener('submit', function (e) {
+            e.preventDefault();
+            let email = document.getElementById('txtUsername').value;
+            let password = document.getElementById('txtPassword').value;
+            let confirmPassword = document.getElementById('txtPasswordConfirm').value;
+
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailRegex.test(email)) {
+                Swal.fire("Error", "Invalid email format", "error");
+                return;
+            }
+
+            if (password.length < 6) {
+                Swal.fire("Error", "Password must be at least 6 characters long", "error");
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                Swal.fire("Error", "Passwords do not match", "error");
+                return;
+            }
+
+            Swal.fire("Success", "Registration successful!", "success");
+        });
+
+        document.getElementById('btnSwapToRegister').addEventListener('click', function (e){
+            e.preventDefault();
+            document.getElementById('frmLogin').classList.add('d-none');
+            document.getElementById('frmRegister').classList.remove('d-none');
+        });
+
+        document.getElementById('btnSwapToLogin').addEventListener('click', function (e){
+            e.preventDefault();
+            document.getElementById('frmRegister').classList.add('d-none');
+            document.getElementById('frmLogin').classList.remove('d-none');
+        });
+
+        document.getElementById('btnResetPassword').addEventListener('click', function(){
+            Swal.fire("Success", "Password Reset Successfully", "success")
+        });
+    </script>
+</body>
+</html>
