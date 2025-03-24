@@ -16,32 +16,30 @@
 <body class="bg-dark">
     <div class="d-flex justify-content-center align-items-center vh-100">
         <!-- login form -->
-        <form id="frmLogin" class="card col-12 col-md-5 col-lg-4 p-4 d-none">
+        <form id="frmLogin" class="card col-12 col-md-5 col-lg-4 p-4">
             <div class="card-body">
                 <h1 class="text-center mb-0 text-light">Teammate Evaluator</h1>
                 <h3 class="text-center mb-4 text-light">Login</h3>
-                <input id="txtLoginEmail" class="form-control" type="email" placeholder="johndoe@email.com"
-                    aria-label="email" required>
-                <input id="txtLoginPassword" class="form-control mt-2" type="password" placeholder="password"
-                    aria-label="password" required>
+                <input id="txtLoginEmail" class="form-control" type="email" placeholder="Email" aria-label="email" required>
+                <input id="txtLoginPassword" class="form-control mt-2" type="password" placeholder="Password" aria-label="password" required>
                 <hr />
                 <button class="btn btn-info col-12 mt-2" type="button" id="btnLogin">Login</button>
                 <button class="btn btn-primary col-12 mt-2" type="button" id="btnResetPassword">Forgot Password?</button>
-                <button class="btn btn-link col-12 mt-0" id="btnSwapToRegister" type="button">Don't have an account?
-                    Register</button>
+                <button class="btn btn-link col-12 mt-0" id="btnSwapToRegister" type="button">Don't have an account? Register</button>
             </div>
         </form>
 
         <!-- registration form -->
-        <form id="frmRegister" class="card col-12 col-md-5 col-lg-4 p-4">
+        <form id="frmRegister" class="card col-12 col-md-5 col-lg-4 p-4 d-none">
             <div class="card-body">
                 <h1 class="text-center mb-0 text-light">Teammate Evaluator</h1>
                 <h3 class="text-center mb-4 text-light">Register</h3>
-                <input id="txtUsername" class="form-control" type="email" placeholder="johndoe@email.com" aria-label="username" required>
-                <input id="txtPassword" class="form-control mt-2" type="password" placeholder="password" aria-label="password" required minlength="6">
-                <input id="txtPasswordConfirm" class="form-control mt-2" type="password" placeholder="confirm password" aria-label="confirm password" required>
-                <input id="txtPhoneNumber" class="form-control mt-2" type="tel" placeholder="phone number" aria-label="phone number" required>
-                
+                <input id="txtUsername" class="form-control" type="email" placeholder="Email" aria-label="username" required>
+                <input id="txtPassword" class="form-control mt-2" type="password" placeholder="Password" aria-label="password" required minlength="6">
+                <input id="txtPasswordConfirm" class="form-control mt-2" type="password" placeholder="Confirm Password" aria-label="confirm password" required>
+                <input id="txtPhoneNumber" class="form-control mt-2" type="tel" placeholder="Phone Number" aria-label="phone number" required>
+                <input id="txtDiscordUsername" class="form-control mt-2" type="username" placeholder="Discord Username" aria-label="text box for discord username" required>
+                <input id="txtMSTeamsUsername" class="form-control mt-2" type="username" placeholder="Microsoft Teams Username" aria-label="text box for microsoft teams username" required>
                 <hr />
                 <button class="btn btn-info col-12 mt-2" type="submit">Register</button>
                 <button class="btn btn-link col-12 mt-0" id="btnSwapToLogin" type="button">Already have an account? Login</button>
