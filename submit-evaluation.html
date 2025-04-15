@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submit Team Evaluation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/sweetalert.js"></script>
+    <style>
+        body {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                        url('images/tech-aib.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+
+        .card {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-label {
+            color: white;
+        }
+    </style>
+</head>
+<body class="d-flex justify-content-center align-items-center vh-100">
+
+    <form class="card p-4 col-11 col-sm-9 col-md-7 col-lg-5" id="evaluationForm">
+        <h2 class="text-center mb-4">Submit Team Evaluation</h2>
+
+        <div class="mb-3">
+            <label for="studentName" class="form-label">Student Name</label>
+            <input type="text" id="studentName" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="rating" class="form-label">Rating (1 to 10)</label>
+            <input type="number" id="rating" class="form-control" min="1" max="10" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea id="description" class="form-control" rows="4" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-info w-100">Submit Evaluation</button>
+    </form>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('evaluationForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('studentName').value.trim();
+            const rating = parseInt(document.getElementById('rating').value);
+            const description = document.getElementById('description').value.trim();
+
+            if (!name || isNaN(rating) || rating < 1 || rating > 10 || !description) {
+                Swal.fire("Error", "Please fill in all fields correctly.", "error");
+                return;
+            }
+
+            // Placeholder for backend submission
+            Swal.fire("Success", "Evaluation submitted successfully!", "success");
+            
+            // Clear the form after a short delay
+            setTimeout(() => {
+                document.getElementById('evaluationForm').reset();
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
